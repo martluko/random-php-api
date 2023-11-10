@@ -15,11 +15,17 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->rememberToken();
-            $table->timestamps();
+            $table->unsignedBigInteger('profession_id')->nullable();
+            $table->unsignedBigInteger('company_id')->nullable();
+            $table->text('comment')->nullable();
+            $table->timestamp('deleted_on')->nullable();
+            $table->timestamp('created_on')->useCurrent();
+        
+            $table->foreign('profession_id')->references('id')->on('professions');
+            $table->foreign('company_id')->references('id')->on('companies');
         });
+        
     }
 
     /**
