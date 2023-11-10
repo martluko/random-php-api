@@ -18,8 +18,8 @@ return new class extends Migration
             $table->unsignedBigInteger('booking_id');
             $table->string('title');
             $table->text('comment')->nullable();
-            $table->timestamp('deleted_on')->nullable();
-            $table->timestamp('created_on')->useCurrent();
+            $table->timestamp('deleted_at')->nullable();
+            $table->timestamp('created_at')->useCurrent();
         
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('professional_id')->references('id')->on('users');

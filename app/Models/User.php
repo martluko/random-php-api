@@ -10,7 +10,7 @@ class User extends Authenticatable
     use SoftDeletes;
 
     protected $fillable = ['name', 'email', 'password', 'profession_id', 'company_id', 'comment'];
-    protected $dates = ['deleted_at'];
+    protected $dates = ['deleted_at', 'created_at'];
     protected $hidden = ['password'];
 
     public function profession() {

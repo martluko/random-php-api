@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('companies', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->timestamp('deleted_on')->nullable();
-            $table->timestamp('created_on')->useCurrent();
+            $table->timestamp('deleted_at')->nullable();
+            $table->timestamp('created_at')->useCurrent();
         });   
     }
 

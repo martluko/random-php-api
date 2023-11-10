@@ -10,7 +10,7 @@ class Payment extends Model
     use SoftDeletes;
 
     protected $fillable = ['comment', 'stripe_payment_id'];
-    protected $dates = ['deleted_at'];
+    protected $dates = ['deleted_at', 'created_at'];
 
     public function bookings() {
         return $this->hasMany(Booking::class);

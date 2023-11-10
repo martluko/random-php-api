@@ -18,8 +18,8 @@ class CompanyResource extends JsonResource
             'id' => $this->id,
             'title' => $this->title,
             // Include other attributes as needed
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
+            'created_at' => $this->created_on,
+            'deleted_at' => $this->deleted_on,
             // Optionally, include relationships
             'users' => UserResource::collection($this->whenLoaded('users')),
         ];

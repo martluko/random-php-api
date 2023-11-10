@@ -18,9 +18,9 @@ class PaymentResource extends JsonResource
             'id' => $this->id,
             'comment' => $this->comment,
             'stripe_payment_id' => $this->stripe_payment_id,
-            // 'created_at' and 'updated_at' are optional
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
+            // 'created_at' and 'deleted_at' are optional
+            'created_at' => $this->created_on,
+            'deleted_at' => $this->deleted_on,
         ];
     }
 }

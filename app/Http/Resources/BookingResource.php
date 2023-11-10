@@ -22,8 +22,8 @@ class BookingResource extends JsonResource
             'user_id' => $this->user_id,
             'professional_id' => $this->professional_id,
             'payment_id' => $this->payment_id,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
+            'created_at' => $this->created_on,
+            'deleted_at' => $this->deleted_on,
 
             // Include related resources if needed
             'user' => new UserResource($this->whenLoaded('user')),

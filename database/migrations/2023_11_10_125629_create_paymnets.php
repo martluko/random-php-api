@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->text('comment')->nullable();
             $table->string('stripe_payment_id');
-            $table->timestamp('deleted_on')->nullable();
-            $table->timestamp('created_on')->useCurrent();
+            $table->timestamp('deleted_at')->nullable();
+            $table->timestamp('created_at')->useCurrent();
         });
         
     }

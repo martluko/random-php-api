@@ -10,7 +10,7 @@ class Company extends Model
     use SoftDeletes;
 
     protected $fillable = ['title'];
-    protected $dates = ['deleted_at'];
+    protected $dates = ['deleted_at', 'created_at'];
 
     public function users() {
         return $this->hasMany(User::class);

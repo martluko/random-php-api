@@ -10,7 +10,7 @@ class Profession extends Model
     use SoftDeletes;
 
     protected $fillable = ['name', 'description'];
-    protected $dates = ['deleted_at'];
+    protected $dates = ['deleted_at', 'created_at'];
 
     public function users() {
         return $this->hasMany(User::class);

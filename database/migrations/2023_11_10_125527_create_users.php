@@ -19,8 +19,8 @@ return new class extends Migration
             $table->unsignedBigInteger('profession_id')->nullable();
             $table->unsignedBigInteger('company_id')->nullable();
             $table->text('comment')->nullable();
-            $table->timestamp('deleted_on')->nullable();
-            $table->timestamp('created_on')->useCurrent();
+            $table->timestamp('deleted_at')->nullable();
+            $table->timestamp('created_at')->useCurrent();
         
             $table->foreign('profession_id')->references('id')->on('professions');
             $table->foreign('company_id')->references('id')->on('companies');

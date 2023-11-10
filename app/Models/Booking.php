@@ -10,7 +10,7 @@ class Booking extends Model
     use SoftDeletes;
 
     protected $fillable = ['comment', 'date_time', 'user_id', 'professional_id', 'payment_id'];
-    protected $dates = ['deleted_at'];
+    protected $dates = ['deleted_at', 'created_at'];
 
     public function user() {
         return $this->belongsTo(User::class);
