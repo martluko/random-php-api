@@ -1,13 +1,13 @@
 <?php
 
-use Illuminate\Http\Request;
+// use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\BookingController;
-use App\Http\Controllers\Api\CompanyController;
-use App\Http\Controllers\Api\ProfessionController;
-use App\Http\Controllers\Api\UserController;
-use App\Http\Controllers\Api\UserHistoryController;
-use App\Http\Controllers\Api\PaymentController;
+// use App\Http\Controllers\Api\CompanyController;
+// use App\Http\Controllers\Api\ProfessionController;
+// use App\Http\Controllers\Api\UserController;
+// use App\Http\Controllers\Api\UserHistoryController;
+// use App\Http\Controllers\Api\PaymentController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -25,6 +25,7 @@ use App\Http\Controllers\Api\PaymentController;
 
 // Bookings Routes
 Route::apiResource('bookings', BookingController::class);
+Route::post('register-visit', [BookingController::class, 'registerVisit']);
 
 // // Company Routes
 // Route::apiResource('companies', CompanyController::class);

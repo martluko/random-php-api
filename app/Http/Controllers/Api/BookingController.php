@@ -7,6 +7,8 @@ use App\Models\Booking;
 use Illuminate\Http\Request;
 use App\Http\Resources\BookingResource;
 use Illuminate\Support\Facades\Validator;
+use App\Models\UserHistory;
+use Illuminate\Support\Facades\DB;
 
 class BookingController extends Controller
 {
@@ -60,5 +62,47 @@ class BookingController extends Controller
     public function destroy(Booking $booking) {
         $booking->delete();
         return response()->json(null, 204);
+    }
+    
+    public function registerVisit(Request $request) {
+        $request->validate([
+            'user_id' => 'required|exists:users,id',
+            'professional_id' => 'required|exists:users,id',
+            'payment_id' => 'required|exists:payments,id',
+        ]);
+
+        try {
+            DB::beginTransaction();
+
+            // Assign current date and time for booking
+            $bookingDateTime = now();
+
+            // Create Booking
+            $booking = Booking::create([
+                'user_id' => $request->user_id,
+                'professional_id' => $request->professional_id,
+                'payment_id' => $request->payment_id,
+                'date_time' => $bookingDateTime,
+                // other fields like 'comment' can be added if needed
+            ]);
+
+            // Create User History (if needed)
+            // to log visit comments, etc.
+            UserHistory::create([
+                'user_id' => $request->user_id,
+                'professional_id' => $request->professional_id,
+                'booking_id' => $booking->id,
+                'title' => 'Consultation Visit',
+                // other fields like 'comment' can be added if needed
+            ]);
+
+            DB::commit();
+
+            return response()->json(['message' => 'Visit registered successfully', 'booking' => $booking], 201);
+
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
     }
 }
